@@ -38,7 +38,7 @@ export default function Sidebar() {
 
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          className="fixed inset-0 bg-black/50 z-30 md:hidden"
           onClick={toggleSidebar}
         ></div>
       )}
@@ -46,7 +46,7 @@ export default function Sidebar() {
       <div
         className={`fixed min-h-full w-[250px] h-screen bg-custom-purple flex flex-col px-3 py-8 transform transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 z-50`}
+        } md:translate-x-0 z-40`}
       >
         <nav className="flex-1 space-y-12">
           <Image src="logo.svg" alt="uifry logo" width={107} height={31.46} />

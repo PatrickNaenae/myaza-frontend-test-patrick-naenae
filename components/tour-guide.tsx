@@ -206,8 +206,9 @@ const TourGuide = ({ start, setStartTour, onTourEnd }: TourGuideProps) => {
           </div>
         </div>
       ),
-      placement: "auto",
+      placement: "right",
       target: "#step-5",
+      disableScrolling: true,
     },
     {
       content: (
@@ -224,8 +225,9 @@ const TourGuide = ({ start, setStartTour, onTourEnd }: TourGuideProps) => {
           </div>
         </div>
       ),
-      placement: "auto",
+      placement: "right",
       target: "#step-6",
+      disableScrolling: true,
     },
   ];
 
@@ -264,6 +266,12 @@ const TourGuide = ({ start, setStartTour, onTourEnd }: TourGuideProps) => {
       onTourEnd();
     } else if (type === EVENTS.STEP_BEFORE) {
       setProgress(index + 1);
+      if (index === 5 || index === 6) {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
     }
   };
 

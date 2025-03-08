@@ -8,7 +8,7 @@
 
 ---
 
-## Project Setup {#project-setup}
+## Project Setup
 
 ### Prerequisites
 
@@ -31,6 +31,7 @@ Before you begin, ensure you have the following installed:
 
    ```bash
    pnpm install
+
    ```
 
 3. Set up environment variables:
@@ -42,6 +43,7 @@ Before you begin, ensure you have the following installed:
 
    ```bash
     npx auth secret
+
    ```
 
    **GOOGLE_API_KEY**=your_google_gemini_api_key [Get Key here](https://aistudio.google.com/apikey)
@@ -50,9 +52,10 @@ Before you begin, ensure you have the following installed:
 
    ```bash
    pnpm run dev
+
    ```
 
-## Assumptions {#assumptions}
+## Assumptions
 
 During development, the following assumptions were made:
 
@@ -63,7 +66,7 @@ During development, the following assumptions were made:
      - **Password**: `password123`
    - This account can be used to log into the platform for testing and development.
 
-## Running the Project {#running-the-project-locally}
+## Running the Project Locally
 
 1. Start the development server:
 
@@ -81,7 +84,7 @@ During development, the following assumptions were made:
   Email: testuser@uifry.com
   Password: password123
 
-## Additional Notes {#additional-notes}
+## Additional Notes
 
 1. **Onboarding Tour**:
 
@@ -96,15 +99,18 @@ During development, the following assumptions were made:
    - Run unit tests using the following command:
    ```bash
     pnpm test
+
    ```
 
-## Technologies Used {#technologies-used}
+## Technologies Used
 
 ### Frontend
 
 - [Next.js](https://nextjs.org/) - React framework for server-rendered applications.
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework for styling.
 - [TypeScript](https://www.typescriptlang.org/) - Static typing for JavaScript.
+- [shadcn/ui](https://ui.shadcn.com/) - Reusable component library built on top of Tailwind CSS and Radix UI.
+- [Aceternity UI](https://aceternity.com/) - Modern UI library for building animated and interactive components.
 - [React Joyride](https://github.com/gilbarbara/react-joyride) - Guided tour for onboarding users.
 - [NextAuth.js](https://next-auth.js.org/) - Authentication library for Next.js.
 

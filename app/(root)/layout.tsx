@@ -28,13 +28,19 @@ export default function DashboardLayout({
   const chatIconRef = useRef<HTMLButtonElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [startTour, setStartTour] = useState(false);
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
 
   useEffect(() => {
     const hasSeenTour = localStorage.getItem("hasSeenTour");
     if (!hasSeenTour) {
-      setStartTour(true);
+      setShowWelcomeModal(true);
     }
   }, []);
+
+  const handleStartTour = () => {
+    setShowWelcomeModal(false);
+    setStartTour(true);
+  };
 
   const handleEndTour = () => {
     setStartTour(false);
@@ -85,13 +91,50 @@ export default function DashboardLayout({
 
   return (
     <>
+      <AnimatePresence>
+        {showWelcomeModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-custom-purple-dark backdrop-opacity-50 flex items-center justify-center z-50"
+          >
+            <motion.div
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full"
+            >
+              <h2 className="text-2xl font-bold mb-4">Welcome to Uifry! 🎉</h2>
+              <p className="text-black mb-6">
+                Get ready to explore our universe😎! 🌌 We’re about to take you
+                on a quick, fun tour of the app to show you all the cool
+                features that’ll make you want to come back😁. Click{" "}
+                <strong>Continue</strong> and let’s blast off! 🚀
+              </p>
+              <div className="flex justify-end">
+                <Button
+                  onClick={handleStartTour}
+                  className="cursor-pointer bg-custom-purple-light hover:bg-custom-purple-dark text-black hover:text-custom-muted"
+                >
+                  Continue
+                </Button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {startTour && (
         <TourGuide
           start={startTour}
-          setStartTour={handleEndTour}
+          setStartTour={setStartTour}
           onTourEnd={handleEndTour}
         />
       )}
+
       <div className="w-full flex min-h-full">
         <Sidebar />
         <main className="w-screen min-h-full h-screen ml-0 md:ml-[250px]">
