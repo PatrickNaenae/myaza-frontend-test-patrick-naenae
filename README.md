@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Table of Contents
 
-## Getting Started
+1. [Project Setup](#project-setup)
+2. [Assumptions](#assumptions)
+3. [Running the Project Locally](#running-the-project-locally)
+4. [Additional Notes](#additional-notes)
+5. [Technologies Used](#technologies-used)
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Project Setup {#project-setup}
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Prerequisites
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Before you begin, ensure you have the following installed:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [pnpm](https://pnpm.io/) (v8 or higher)
+- [Git](https://git-scm.com/)
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   git clone https://github.com/PatrickNaenae/myaza-frontend-test-patrick-naenae.git
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```
 
-## Deploy on Vercel
+2. Install dependencies:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   pnpm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. Set up environment variables:
+
+   - Create a .env.local file in the root directory.
+   - Add the required environment variables (e.g., API keys, endpoints):
+     **AUTH_SECRET**=your_next_auth_secret_key  
+     Run the following command to generate your key:
+
+   ```bash
+    npx auth secret
+   ```
+
+   **GOOGLE_API_KEY**=your_google_gemini_api_key [Get Key here](https://aistudio.google.com/apikey)
+
+4. Run development server:
+
+   ```bash
+   pnpm run dev
+   ```
+
+## Assumptions {#assumptions}
+
+During development, the following assumptions were made:
+
+1. **Authentication**:
+   - Authentication is handled using **NextAuth.js**.
+   - A dummy user account has been created for testing purposes:
+     - **Email**: `testuser@uifry.com`
+     - **Password**: `password123`
+   - This account can be used to log into the platform for testing and development.
+
+## Running the Project {#running-the-project-locally}
+
+1. Start the development server:
+
+   ```bash
+   pnpm dev
+
+   ```
+
+2. Open your browser and navigate to:
+   http://localhost:3000
+
+3. Explore the app:
+
+- Use the following test account to log in:
+  Email: testuser@uifry.com
+  Password: password123
+
+## Additional Notes {#additional-notes}
+
+1. **Onboarding Tour**:
+
+   - A guided tour is available to help new users navigate the dashboard.
+
+2. **Chatbox AI**:
+
+   - A chatbox AI is integrated into the platform to assist users.
+   - The AI is designed to answer questions **only related to Uifry**,
+
+3. **Unit Tests**
+   - Run unit tests using the following command:
+   ```bash
+    pnpm test
+   ```
+
+## Technologies Used {#technologies-used}
+
+### Frontend
+
+- [Next.js](https://nextjs.org/) - React framework for server-rendered applications.
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework for styling.
+- [TypeScript](https://www.typescriptlang.org/) - Static typing for JavaScript.
+- [React Joyride](https://github.com/gilbarbara/react-joyride) - Guided tour for onboarding users.
+- [NextAuth.js](https://next-auth.js.org/) - Authentication library for Next.js.
+
+### AI Integration
+
+- [Google Gemini API](https://aistudio.google.com/prompts/new_chat) - API for integrating the Gemini AI model, powering the chatbox for Uifry-related queries.
+
+### Testing
+
+- [Jest](https://jestjs.io/docs/getting-started) - JavaScript testing framework for unit tests.
+
+### Tools
+
+- [pnpm](https://pnpm.io/) - Fast, disk-space-efficient package manager.
+- [ESLint](https://eslint.org/) - Linting tool for JavaScript/TypeScript.
