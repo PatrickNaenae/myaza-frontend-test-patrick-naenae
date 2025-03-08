@@ -96,7 +96,9 @@ During development, the following assumptions were made:
    - The AI is designed to answer questions **only related to Uifry**,
 
 3. **Unit Tests**
+
    - Run unit tests using the following command:
+
    ```bash
     pnpm test
 
