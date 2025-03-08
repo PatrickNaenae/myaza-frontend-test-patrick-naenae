@@ -7,7 +7,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 export default function Page() {
   return (
-    <div className="min-h-full w-full flex flex-col p-4 lg:p-8 space-y-8 bg-custom-purple-dark text-white">
+    <div className="min-h-full pt-20 md:pt-4 lg:pt-8 w-full flex flex-col p-4 lg:p-8 space-y-8 bg-custom-purple-dark text-white">
       <SectionHeader
         title="My wallets"
         description="Manage all your wallets from here"

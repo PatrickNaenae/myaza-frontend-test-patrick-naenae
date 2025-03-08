@@ -8,6 +8,7 @@ import { transactions } from "@/lib/data";
 import CardOverview from "@/components/card-overview";
 import ActivityCard from "@/components/activity-card";
 import AnalyticsCard from "@/components/analytics-card";
+import { useEffect, useState } from "react";
 
 const incomeData = [
   { month: "Jan", value: 24000 },
@@ -34,33 +35,65 @@ const outcomeData = [
 const year = "2020";
 
 export default function Page() {
+  const [showTooltip, setShowTooltip] = useState<boolean>(true);
+
+  useEffect(() => {
+    const storedShowTooltip = sessionStorage.getItem("showTooltip");
+    if (storedShowTooltip === "false") {
+      setShowTooltip(false);
+    }
+
+    const handleStorageChange = () => {
+      const storedShowTooltip = sessionStorage.getItem("showTooltip");
+      if (storedShowTooltip === "false") {
+        setShowTooltip(false);
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
+  console.log(showTooltip);
+
   return (
-    <div className="w-full flex flex-col p-4 lg:p-8 space-y-8 min-h-screen bg-custom-purple-dark text-white">
+    <div className="w-full pt-20 md:pt-4 lg:pt-8 flex flex-col p-4 lg:p-8  space-y-8 min-h-screen bg-custom-purple-dark text-white">
       <SectionHeader
         title="Welcome Back, Ali 👋"
         description="Here's what's happening with your store today."
       />
       <div className="w-full min-h-full flex flex-col lg:flex-row gap-6">
         <div className="min-h-full w-full lg:w-7/12 flex flex-col gap-6">
-          <div id="step-0" className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <StatCard
-              title="Total Income"
-              value="$632.000"
-              percentageChange="+1.29%"
-              icon={<ArrowDownRight className="h-6 w-6 text-white" />}
-              iconBgColor="bg-[#64CFF6]"
-              percentageChangeColor="text-custom-success"
-              percentageBgColor="bg-custom-success-foreground"
-            />
-            <StatCard
-              title="Total Outcome"
-              value="$632.000"
-              percentageChange="-1.29%"
-              icon={<ArrowUpRight className="h-6 w-6 text-white" />}
-              iconBgColor="bg-[#6359E9]"
-              percentageChangeColor="text-destructive"
-              percentageBgColor="bg-destructive-foreground"
-            />
+          <div className="relative">
+            <div id="step-0" className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <StatCard
+                title="Total Income"
+                value="$632.000"
+                percentageChange="+1.29%"
+                icon={<ArrowDownRight className="h-6 w-6 text-white" />}
+                iconBgColor="bg-[#64CFF6]"
+                percentageChangeColor="text-custom-success"
+                percentageBgColor="bg-custom-success-foreground"
+              />
+              <StatCard
+                title="Total Outcome"
+                value="$632.000"
+                percentageChange="-1.29%"
+                icon={<ArrowUpRight className="h-6 w-6 text-white" />}
+                iconBgColor="bg-[#6359E9]"
+                percentageChangeColor="text-destructive"
+                percentageBgColor="bg-destructive-foreground"
+              />
+            </div>
+            {showTooltip && (
+              <div className="absolute -top-5 left-10 bg-custom-purple-dark flex items-center gap-2 text-white text-sm px-3 py-1 rounded tooltip">
+                <span className="text-2xl">👈</span> Click here to start the
+                tour!
+              </div>
+            )}
           </div>
           <div className="flex-1">
             <AnalyticsCard

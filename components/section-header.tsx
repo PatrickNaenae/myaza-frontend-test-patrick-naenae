@@ -13,8 +13,10 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <div className="flex flex-col lg:flex-row justify-between gap-4 lg:gap-0 lg:items-center">
       <div className="space-y-2">
-        <h1 className="text-2xl font-semibold">{title}</h1>
-        <p className="text-secondary-foreground">{description}</p>
+        <h1 className="text-xl md:text-2xl font-semibold">{title}</h1>
+        <p className="text-sm md:text-base text-secondary-foreground">
+          {description}
+        </p>
       </div>
       <SearchInput />
     </div>

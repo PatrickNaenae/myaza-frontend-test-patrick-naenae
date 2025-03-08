@@ -105,10 +105,12 @@ export default function DashboardLayout({
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
               transition={{ duration: 0.3 }}
-              className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full"
+              className="mx-2 md:mx-0 bg-white px-4 py-6 md:p-6 rounded-lg shadow-lg max-w-md w-full"
             >
-              <h2 className="text-2xl font-bold mb-4">Welcome to Uifry! 🎉</h2>
-              <p className="text-black mb-6">
+              <h2 className="text-xl md:text-2xl font-bold mb-4">
+                Welcome to Uifry! 🎉
+              </h2>
+              <p className="text-sm md:text-base text-black mb-6">
                 Get ready to explore our universe😎! 🌌 We’re about to take you
                 on a quick, fun tour of the app to show you all the cool
                 features that’ll make you want to come back😁. Click{" "}

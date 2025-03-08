@@ -151,7 +151,7 @@ const TourGuide = ({ start, setStartTour, onTourEnd }: TourGuideProps) => {
           </div>
         </div>
       ),
-      placement: "auto",
+      placement: "top",
       target: "#step-3",
     },
     {
@@ -190,7 +190,7 @@ const TourGuide = ({ start, setStartTour, onTourEnd }: TourGuideProps) => {
           </div>
         </div>
       ),
-      placement: "auto",
+      placement: "top",
       target: "#step-4",
     },
     {
@@ -266,6 +266,12 @@ const TourGuide = ({ start, setStartTour, onTourEnd }: TourGuideProps) => {
       onTourEnd();
     } else if (type === EVENTS.STEP_BEFORE) {
       setProgress(index + 1);
+
+      if (index > 0) {
+        sessionStorage.setItem("showTooltip", "false");
+        window.dispatchEvent(new Event("storage"));
+      }
+
       if (index === 5 || index === 6) {
         window.scrollTo({
           top: 0,
