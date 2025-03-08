@@ -37,7 +37,7 @@ Before you begin, ensure you have the following installed:
 3. Set up environment variables:
 
    - Create a .env.local file in the root directory.
-   - Add the required environment variables (e.g., API keys, endpoints):
+   - Add the required environment variables:
      **AUTH_SECRET**=your_next_auth_secret_key  
      Run the following command to generate your key:
 
