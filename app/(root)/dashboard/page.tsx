@@ -35,12 +35,21 @@ const outcomeData = [
 const year = "2020";
 
 export default function Page() {
-  const [showTooltip, setShowTooltip] = useState<boolean>(true);
+  const [showTooltip, setShowTooltip] = useState<boolean | null>(null);
 
   useEffect(() => {
+    const hasSeenTour = localStorage.getItem("hasSeenTour") === "true";
+
+    if (hasSeenTour) {
+      setShowTooltip(false);
+      return;
+    }
+
     const storedShowTooltip = sessionStorage.getItem("showTooltip");
     if (storedShowTooltip === "false") {
       setShowTooltip(false);
+    } else {
+      setShowTooltip(true);
     }
 
     const handleStorageChange = () => {
@@ -56,8 +65,6 @@ export default function Page() {
       window.removeEventListener("storage", handleStorageChange);
     };
   }, []);
-
-  console.log(showTooltip);
 
   return (
     <div className="w-full pt-20 md:pt-4 lg:pt-8 flex flex-col p-4 lg:p-8  space-y-8 min-h-screen bg-custom-purple-dark text-white">
